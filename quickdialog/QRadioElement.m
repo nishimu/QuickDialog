@@ -129,20 +129,16 @@
 
 - (CGFloat)getRowHeightForTableView:(QuickDialogTableView *)tableView {
     if (self.valueLineBreakPolicy == QValueLineBreakPolicyWrap) {
-        NSLog(@"getRowH in Radio");
         NSString *selectedValue = nil;
         if (_selected >= 0 && _selected <_items.count)
             selectedValue = [[_items objectAtIndex:(NSUInteger) _selected] description];
-        NSLog(@"value=%@", selectedValue);
 
         CGSize constraint = CGSizeMake(tableView.frame.size.width-(tableView.root.grouped ? 40.f : 20.f), 20000);
         CGSize  size= [selectedValue sizeWithFont:self.font constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         CGFloat predictedHeight = size.height + 20.0f;
         if (self.title!=nil)
             predictedHeight+=30;
-        NSLog(@"predictedHeight=%g, font=%@", predictedHeight, self.font);
-        return (_height >= predictedHeight) ? _height : predictedHeight;
-        
+        return (_height >= predictedHeight) ? _height : predictedHeight;        
     } else {
         return [super getRowHeightForTableView:tableView];
     }
