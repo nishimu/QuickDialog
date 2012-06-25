@@ -402,6 +402,15 @@
     QLabelElement* label = [[QLabelElement alloc] initWithTitle:@"Long text" Value:@"long text1 long text2 long text3 long text4 long text5 long text6"];
     label.valueLineBreakPolicy = QValueLineBreakPolicyWrap;
     [s1 addElement:label];
+    label = [[QLabelElement alloc] initWithTitle:nil Value:@"long text1 long text2 long text3 long text4 long text5 long text6"];
+    label.labelingPolicy = QLabelingPolicyTrimValue;
+    [s1 addElement:label];
+    label = [[QLabelElement alloc] initWithTitle:@"long text1 long text2 long text3 long text4 long text5 long text6"  Value:@"long text1 long text2 long text3 long text4 long text5 long text6"];
+    label.labelingPolicy = QLabelingPolicyTrimValue;
+    [s1 addElement:label];
+    label = [[QLabelElement alloc] initWithTitle:@"long text1 long text2 long text3 long text4 long text5 long text6"  Value:nil];
+    label.labelingPolicy = QLabelingPolicyTrimValue;
+    [s1 addElement:label];
 
     QSection *s2 = [[QSection alloc] initWithTitle:@"BadgeElement"];
     QBadgeElement *badge1 = [[QBadgeElement alloc] initWithTitle:@"With a badge" Value:@"1"];
