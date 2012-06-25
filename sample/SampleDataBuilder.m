@@ -265,6 +265,9 @@
     radioElement = [[QRadioElement alloc] initWithItems:[NSArray arrayWithObjects:@"very very very very very very very very very long", @"very very very very very very very very very long 2", @"very very very very very very very very very long 3", nil] selected:0];
     radioElement.valueLineBreakPolicy = QValueLineBreakPolicyWrap;
     [section1 addElement:radioElement];
+    radioElement = [[QRadioElement alloc] initWithItems:[NSArray arrayWithObjects:@"", @"very very very very very very very very very long 2", @"very very very very very very very very very long 3", nil] selected:0];
+    radioElement.valueLineBreakPolicy = QValueLineBreakPolicyWrap;
+    [section1 addElement:radioElement];
     [root addSection:section1];
 
     QRadioSection *section2 = [[QRadioSection alloc] initWithItems:[NSArray arrayWithObjects:@"Football", @"Soccer", @"Formula 1", nil] selected:0 title:@"Sport"];
@@ -398,6 +401,15 @@
     [s1 addElement:[[QLabelElement alloc] initWithTitle:@"Long text long text long text long text" Value:@"this is the value"]];
     QLabelElement* label = [[QLabelElement alloc] initWithTitle:@"Long text" Value:@"long text1 long text2 long text3 long text4 long text5 long text6"];
     label.valueLineBreakPolicy = QValueLineBreakPolicyWrap;
+    [s1 addElement:label];
+    label = [[QLabelElement alloc] initWithTitle:nil Value:@"long text1 long text2 long text3 long text4 long text5 long text6"];
+    label.labelingPolicy = QLabelingPolicyTrimValue;
+    [s1 addElement:label];
+    label = [[QLabelElement alloc] initWithTitle:@"long text1 long text2 long text3 long text4 long text5 long text6"  Value:@"long text1 long text2 long text3 long text4 long text5 long text6"];
+    label.labelingPolicy = QLabelingPolicyTrimValue;
+    [s1 addElement:label];
+    label = [[QLabelElement alloc] initWithTitle:@"long text1 long text2 long text3 long text4 long text5 long text6"  Value:nil];
+    label.labelingPolicy = QLabelingPolicyTrimValue;
     [s1 addElement:label];
 
     QSection *s2 = [[QSection alloc] initWithTitle:@"BadgeElement"];
