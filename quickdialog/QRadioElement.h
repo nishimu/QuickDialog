@@ -25,6 +25,8 @@
 @property(nonatomic, assign) id selectedItem;
 @property(nonatomic, assign, readwrite) NSInteger selected;
 @property(nonatomic, retain) NSArray *values;
+@property(nonatomic, strong) NSString *placeholder;
+
 
 - (QRadioElement *)initWithDict:(NSDictionary *)valuesDictionary selected:(int)selected title:(NSString *)title;
 

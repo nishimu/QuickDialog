@@ -21,6 +21,7 @@
 @synthesize selected = _selected;
 @synthesize values = _values;
 @synthesize items = _items;
+@synthesize placeholder = _placeholder;
 
 
 - (void)createElements {
@@ -121,6 +122,10 @@
 //    cell.textField.userInteractionEnabled = NO;
     if (self.title == nil) {
         cell.detailTextLabel.textAlignment = UITextAlignmentLeft;
+    }
+    if (self.placeholder != nil && [selectedValue length ] == 0 ) {
+        cell.detailTextLabel.text = self.placeholder;
+        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     }
     return cell;
 }
