@@ -17,13 +17,18 @@
 @implementation QRadioElement {
     QSection *_internalRadioItemsSection;
 }
-
+static UIColor* _defaultValueColor = nil;
 @synthesize selected = _selected;
 @synthesize values = _values;
 @synthesize items = _items;
 @synthesize placeholder = _placeholder;
 
-
++ (UIColor*) getDefaultValueColor {
+    return _defaultValueColor;
+}
++(void) setDefaultValueColor:(UIColor*)color {
+    _defaultValueColor = [color copy];
+}
 - (void)createElements {
     _sections = nil;
     _internalRadioItemsSection = [[QSection alloc] init];
@@ -106,7 +111,9 @@
         selectedValue = [[_items objectAtIndex:(NSUInteger) _selected] description];
     self.value = selectedValue;
     QEntryTableViewCell *cell = (QEntryTableViewCell *) [super getCellForTableView:tableView controller:controller];
-    
+    if ([QRadioElement getDefaultValueColor] == nil) {
+        [QRadioElement setDefaultValueColor:cell.detailTextLabel.textColor];
+    }
 //    if (self.title == NULL){
 //        cell.textField.text = selectedValue;
 //        cell.detailTextLabel.text = nil;
@@ -123,9 +130,13 @@
     if (self.title == nil) {
         cell.detailTextLabel.textAlignment = UITextAlignmentLeft;
     }
+
     if (self.placeholder != nil && [selectedValue length ] == 0 ) {
         cell.detailTextLabel.text = self.placeholder;
         cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+    } else {
+        cell.detailTextLabel.textColor = [QRadioElement getDefaultValueColor];
+;
     }
     return cell;
 }
