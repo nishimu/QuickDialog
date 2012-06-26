@@ -26,7 +26,7 @@
 @property(nonatomic, assign, readwrite) NSInteger selected;
 @property(nonatomic, retain) NSArray *values;
 @property(nonatomic, strong) NSString *placeholder;
-
+@property(nonatomic) UITextAlignment textAlignment;
 
 - (QRadioElement *)initWithDict:(NSDictionary *)valuesDictionary selected:(int)selected title:(NSString *)title;
 

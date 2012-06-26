@@ -22,6 +22,7 @@ static UIColor* _defaultValueColor = nil;
 @synthesize values = _values;
 @synthesize items = _items;
 @synthesize placeholder = _placeholder;
+@synthesize textAlignment = _textAlignment;
 
 + (UIColor*) getDefaultValueColor {
     return _defaultValueColor;
@@ -127,16 +128,27 @@ static UIColor* _defaultValueColor = nil;
 //    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 //    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 //    cell.textField.userInteractionEnabled = NO;
-    if (self.title == nil) {
-        cell.detailTextLabel.textAlignment = UITextAlignmentLeft;
-    }
+    if (self.title == nil && self.textAlignment == UITextAlignmentLeft) {
+        cell.detailTextLabel.text = nil;
+        cell.textLabel.font = self.font;
 
-    if (self.placeholder != nil && [selectedValue length ] == 0 ) {
-        cell.detailTextLabel.text = self.placeholder;
-        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+        if (self.valueLineBreakPolicy == QValueLineBreakPolicyWrap) {
+            cell.textLabel.numberOfLines = 0;
+        }
+        if (self.placeholder != nil && [selectedValue length ] == 0 ) {
+            cell.textLabel.text = self.placeholder;
+            cell.textLabel.textColor = [UIColor lightGrayColor];
+        } else {
+            cell.textLabel.text = selectedValue;
+            cell.textLabel.textColor = [QRadioElement getDefaultValueColor];
+        }
     } else {
-        cell.detailTextLabel.textColor = [QRadioElement getDefaultValueColor];
-;
+        if (self.placeholder != nil && [selectedValue length ] == 0 ) {
+            cell.detailTextLabel.text = self.placeholder;
+            cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+        } else {
+            cell.detailTextLabel.textColor = [QRadioElement getDefaultValueColor];
+        }
     }
     return cell;
 }

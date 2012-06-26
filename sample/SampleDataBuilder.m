@@ -257,6 +257,9 @@
     QRadioElement* r = [[QRadioElement alloc] initWithItems:[NSArray arrayWithObjects:@"", @"Football", @"Soccer", @"Formula 1", nil] selected:0 title:@"Sport(PlaceHolder)"];
     r.placeholder = @"Please Select";
     [section1 addElement:r];
+    r = [[QRadioElement alloc] initWithItems:[NSArray arrayWithObjects:@"", @"Football", @"Soccer", @"Formula 1", nil] selected:0 title:nil];
+    r.placeholder = @"Please Select";
+    [section1 addElement:r];
     [section1 addElement:[[QRadioElement alloc] initWithDict:[NSDictionary dictionaryWithObjectsAndKeys:@"FerrariObj", @"Ferrari", @"McLarenObj", @"McLaren", @"MercedesObj", @"Mercedes", nil] selected:0 title:@"With Dict"]];
 
     QRadioElement *elementWithAction = [[QRadioElement alloc] initWithItems:[NSArray arrayWithObjects:@"Ferrari", @"McLaren", @"Lotus", nil] selected:0 title:@"WithAction"];
