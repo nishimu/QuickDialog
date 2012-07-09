@@ -268,7 +268,8 @@
     QRadioElement* radioElement = [[QRadioElement alloc] initWithItems:[NSArray arrayWithObjects:@"very very very very very very very very very long", @"very very very very very very very very very long 2", @"very very very very very very very very very long 3", nil] selected:0 title:@"Wrap Test"];
     radioElement.valueLineBreakPolicy = QValueLineBreakPolicyWrap;
     [section1 addElement:radioElement];
-    radioElement = [[QRadioElement alloc] initWithItems:[NSArray arrayWithObjects:@"very very very very very very very very very long", @"very very very very very very very very very long 2", @"very very very very very very very very very long 3", nil] selected:0];
+    radioElement = [[QRadioElement alloc] initWithItems:[NSArray arrayWithObjects:@"very very very very very very very very very long", @"very very very very very very very very very long 2", @"very very very very very very very very very long 3", nil] selected:0 title:@"very long"];
+    radioElement.titleHidden = YES;
     radioElement.valueLineBreakPolicy = QValueLineBreakPolicyWrap;
     [section1 addElement:radioElement];
     radioElement = [[QRadioElement alloc] initWithItems:[NSArray arrayWithObjects:@"", @"very very very very very very very very very long 2", @"very very very very very very very very very long 3", nil] selected:0];

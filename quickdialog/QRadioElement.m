@@ -128,7 +128,7 @@ static UIColor* _defaultValueColor = nil;
 //    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 //    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 //    cell.textField.userInteractionEnabled = NO;
-    if (self.title == nil && self.textAlignment == UITextAlignmentLeft) {
+    if ((self.isTitleHidden || self.title == nil) && self.textAlignment == UITextAlignmentLeft) {
         cell.detailTextLabel.text = nil;
         cell.textLabel.font = self.font;
 

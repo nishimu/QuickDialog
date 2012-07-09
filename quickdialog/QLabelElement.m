@@ -26,6 +26,7 @@
 @synthesize value = _value;
 @synthesize accessoryType = _accessoryType;
 @synthesize font = _font;
+@synthesize titleHidden = _titleHidden;
 
 - (QLabelElement *)init {
     self = [super init];
@@ -58,7 +59,9 @@
     cell.accessoryType = _accessoryType== (int) nil ? UITableViewCellAccessoryNone : _accessoryType;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-    cell.textLabel.text = _title;
+    if (!_titleHidden) {
+        cell.textLabel.text = _title;
+    }
     cell.detailTextLabel.text = [_value description];
     if (self.valueLineBreakPolicy == QValueLineBreakPolicyWrap) {
         cell.detailTextLabel.numberOfLines = 0;

@@ -29,6 +29,7 @@
 @property(nonatomic, assign) UITableViewCellAccessoryType accessoryType;
 @property(nonatomic, strong) id value;
 @property(nonatomic, strong) UIFont *font;
+@property(nonatomic, getter=isTitleHidden) BOOL titleHidden;
 
 - (QLabelElement *)initWithTitle:(NSString *)string Value:(id)value;
 
