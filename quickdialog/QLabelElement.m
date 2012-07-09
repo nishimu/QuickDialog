@@ -84,7 +84,7 @@
         CGSize constraint = CGSizeMake(tableView.frame.size.width-(tableView.root.grouped ? 40.f : 20.f), 20000);
         CGSize  size= [[_value description] sizeWithFont:_font constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         CGFloat predictedHeight = size.height + 20.0f;
-        if (self.title!=nil)
+        if (self.title!=nil || !_titleHidden)
             predictedHeight+=30;
         CGFloat height = [super getRowHeightForTableView:tableView];
         return (height >= predictedHeight) ? height : predictedHeight;
